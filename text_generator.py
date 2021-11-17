@@ -86,7 +86,7 @@ def print_results(data_dict: dict, first_word: str) -> None:
 def main() -> None:
     """A Controller function"""
 
-    corpus = read_input_data(input())
+    corpus = read_input_data('corpus.txt')
     tokens_list = create_tokens(corpus)
     data_dict = create_data_set(tokens_list)
 
