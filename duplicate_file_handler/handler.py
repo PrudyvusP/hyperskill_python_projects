@@ -132,7 +132,6 @@ def delete_duplicates(_container: list) -> None:
                     and set(map(int, what_files.split())).issubset(list(range(1, len(_container) + 1)))):
                 nums_for_del = map(int, what_files.split())
                 memory_free = 0
-                print(_container)
                 for num in nums_for_del:
                     os.remove(_container[num - 1][0])
                     memory_free += _container[num - 1][1]
