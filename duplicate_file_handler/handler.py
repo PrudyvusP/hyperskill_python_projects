@@ -25,6 +25,7 @@ BYTES_CONST = 8192
 
 
 def parse_args() -> str:
+    """Returns parsed arg with a directory"""
     parser = argparse.ArgumentParser(description='Duplicate File Handler')
     parser.add_argument('directory',
                         type=str,
@@ -54,15 +55,8 @@ def get_file_hash(_file_name: str) -> str:
     return file_hash.hexdigest()
 
 
-def check_directory() -> None:
-    """Special check for tasks test (Duck realization :/)"""
-    if len(sys.argv) == 1:
-        print('Directory is not specified')
-        sys.exit()
-
-
 def get_dir_info(_dir: str, ending: str) -> typing.Tuple[dict, dict]:
-    """Returns two dicts with info data after walking through a directory"""
+    """Returns two dicts with info data after walking through the directory"""
     _dct_sizes_names = defaultdict(list)
     _dct_sizes_hash_names = defaultdict(list)
     if os.access(_dir, os.R_OK):
@@ -78,7 +72,7 @@ def get_dir_info(_dir: str, ending: str) -> typing.Tuple[dict, dict]:
 
 
 def get_structed_info(_dct_sizes_names: dict, _dct_sizes_hash_names: dict) -> dict:
-    """Returns all info about data in the sctructed dict"""
+    """Returns all info about data in the structed dict"""
     _dct_main = defaultdict(list)
     for main_size_key in _dct_sizes_names:
         for main_size_hash_key in _dct_sizes_hash_names:
